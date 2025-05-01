@@ -48,7 +48,7 @@ const CheckOut = () => {
     event.preventDefault();
 
     if (!selectedFile) {
-      setError('Please select an image file');
+      setError('Vui lòng chọn một tệp hình ảnh');
       return;
     }
 
@@ -71,7 +71,7 @@ const CheckOut = () => {
       setStep('confirm');
     } catch (error) {
       console.error('Error verifying vehicle:', error);
-      setError(error.response?.data?.error || 'An error occurred while verifying the vehicle');
+      setError(error.response?.data?.error || 'Đã xảy ra lỗi khi xác minh xe');
     } finally {
       setVerifying(false);
     }
@@ -81,7 +81,7 @@ const CheckOut = () => {
     event.preventDefault();
 
     if (!vehicleId) {
-      setError('Please enter a vehicle ID');
+      setError('Vui lòng nhập mã xe');
       return;
     }
 
@@ -110,7 +110,7 @@ const CheckOut = () => {
       }
     } catch (error) {
       console.error('Error checking out vehicle:', error);
-      setError(error.response?.data?.error || 'An error occurred while checking out the vehicle');
+      setError(error.response?.data?.error || 'Đã xảy ra lỗi khi đăng ký xe ra bãi');
     } finally {
       setLoading(false);
     }
@@ -183,19 +183,19 @@ const CheckOut = () => {
 
   return (
     <div>
-      <h1>Vehicle Check-Out</h1>
+      <h1>Đăng ký xe ra bãi</h1>
 
       {successMessage && (
         <Alert variant="success" className="mb-4" dismissible onClose={() => setSuccessMessage(null)}>
-          <Alert.Heading>Vehicle Successfully Checked Out!</Alert.Heading>
+          <Alert.Heading>Đăng ký xe ra bãi thành công!</Alert.Heading>
           <p>
-            Vehicle with license plate <strong>{successMessage.licensePlate}</strong> (ID: {successMessage.vehicleId}) has been checked out at {successMessage.exitTime}.
+            Xe có biển số <strong>{successMessage.licensePlate}</strong> (Mã: {successMessage.vehicleId}) đã được đăng ký ra bãi lúc {successMessage.exitTime}.
             <br />
-            Parking duration: {successMessage.parkingDuration}
+            Thời gian đỗ xe: {successMessage.parkingDuration}
             {successMessage.isMonthlyRegistered && (
               <>
                 <br />
-                <span className="badge bg-success mt-2">Monthly Registered Vehicle - Automatic Checkout</span>
+                <span className="badge bg-success mt-2">Xe đăng ký tháng - Tự động đăng ký ra</span>
               </>
             )}
           </p>
@@ -205,14 +205,14 @@ const CheckOut = () => {
       {step === 'verify' && (
         <div className="mb-4">
           <p className="lead">
-            Step 1: Take a photo of the vehicle to identify it for checkout.
+            Bước 1: Chụp ảnh xe để xác định xe cần đăng ký ra bãi.
           </p>
           <Card className="mb-4">
-            <Card.Header as="h5">Vehicle Verification</Card.Header>
+            <Card.Header as="h5">Xác minh xe</Card.Header>
             <Card.Body>
               <Form onSubmit={handleVerifyVehicle}>
                 <Form.Group className="mb-3">
-                  <Form.Label>Upload Vehicle Image</Form.Label>
+                  <Form.Label>Tải lên hình ảnh xe</Form.Label>
                   <Form.Control
                     type="file"
                     accept="image/*"
@@ -220,7 +220,7 @@ const CheckOut = () => {
                     ref={fileInputRef}
                   />
                   <Form.Text className="text-muted">
-                    Upload a clear image of the vehicle showing its license plate.
+                    Tải lên hình ảnh rõ nét của xe hiển thị biển số.
                   </Form.Text>
                 </Form.Group>
 
@@ -228,7 +228,7 @@ const CheckOut = () => {
                   <div className="mb-3 text-center">
                     <Image
                       src={previewUrl}
-                      alt="Vehicle preview"
+                      alt="Xem trước hình ảnh xe"
                       style={{ maxHeight: '300px' }}
                       thumbnail
                     />
@@ -250,15 +250,15 @@ const CheckOut = () => {
                           role="status"
                           aria-hidden="true"
                         />
-                        {' '}Verifying...
+                        {' '}Đang xác minh...
                       </>
-                    ) : 'Verify Vehicle'}
+                    ) : 'Xác minh xe'}
                   </Button>
                   <Button
                     variant="outline-secondary"
                     onClick={switchToManualSelection}
                   >
-                    Can't identify? Select manually
+                    Không nhận diện được? Chọn thủ công
                   </Button>
                 </div>
               </Form>
@@ -271,19 +271,19 @@ const CheckOut = () => {
         <div className="mb-4">
           <p className="lead">
             {verificationResult.manualSelection
-              ? "Manual Selection: Confirm vehicle identity and complete checkout."
-              : "Step 2: Confirm vehicle identity and complete checkout."}
+              ? "Chọn thủ công: Xác nhận thông tin xe và hoàn tất đăng ký ra bãi."
+              : "Bước 2: Xác nhận thông tin xe và hoàn tất đăng ký ra bãi."}
           </p>
           <Card className="mb-4">
-            <Card.Header as="h5">Vehicle Verification Result</Card.Header>
+            <Card.Header as="h5">Kết quả xác minh xe</Card.Header>
             <Card.Body>
               <Row>
                 {!verificationResult.manualSelection && (
                   <Col md={6}>
-                    <h6>Recognized Information:</h6>
+                    <h6>Thông tin nhận diện:</h6>
                     <p>
-                      <strong>License Plate:</strong> {verificationResult.recognizedLicensePlate}<br />
-                      <strong>Vehicle Type:</strong> {verificationResult.recognizedVehicleType}<br />
+                      <strong>Biển số xe:</strong> {verificationResult.recognizedLicensePlate}<br />
+                      <strong>Loại xe:</strong> {verificationResult.recognizedVehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
                       {verificationResult.debugImage && (
                         <a
                           href={`/DebugFrames/${verificationResult.debugImage}`}
@@ -291,23 +291,23 @@ const CheckOut = () => {
                           rel="noopener noreferrer"
                           className="btn btn-sm btn-outline-primary mt-2"
                         >
-                          View Captured Image
+                          Xem ảnh đã chụp
                         </a>
                       )}
                     </p>
                   </Col>
                 )}
                 <Col md={verificationResult.manualSelection ? 12 : 6}>
-                  <h6>Stored Information:</h6>
+                  <h6>Thông tin lưu trữ:</h6>
                   <p>
-                    <strong>Vehicle ID:</strong> {verificationResult.vehicle.vehicleId}<br />
-                    <strong>License Plate:</strong> {verificationResult.vehicle.licensePlate}<br />
-                    <strong>Vehicle Type:</strong> {verificationResult.vehicle.vehicleType}<br />
-                    <strong>Slot:</strong> {verificationResult.vehicle.slotId}<br />
-                    <strong>Entry Time:</strong> {new Date(verificationResult.vehicle.entryTime).toLocaleString()}<br />
-                    <strong>Registration Type:</strong> {verificationResult.vehicle.isMonthlyRegistered ?
-                      <span className="text-success">Monthly Registered (Automatic Checkout)</span> :
-                      <span>Casual (Payment Required)</span>}<br />
+                    <strong>Mã xe:</strong> {verificationResult.vehicle.vehicleId}<br />
+                    <strong>Biển số xe:</strong> {verificationResult.vehicle.licensePlate}<br />
+                    <strong>Loại xe:</strong> {verificationResult.vehicle.vehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
+                    <strong>Vị trí đỗ:</strong> {verificationResult.vehicle.slotId}<br />
+                    <strong>Thời gian vào:</strong> {new Date(verificationResult.vehicle.entryTime).toLocaleString()}<br />
+                    <strong>Loại đăng ký:</strong> {verificationResult.vehicle.isMonthlyRegistered ?
+                      <span className="text-success">Đăng ký tháng (Tự động đăng ký ra)</span> :
+                      <span>Vãng lai (Yêu cầu thanh toán)</span>}<br />
                   </p>
                 </Col>
               </Row>
@@ -315,14 +315,14 @@ const CheckOut = () => {
               {!verificationResult.manualSelection && (
                 <Alert variant={verificationResult.vehicleTypeMatches ? "success" : "warning"}>
                   {verificationResult.vehicleTypeMatches
-                    ? "✅ Vehicle type matches the stored information."
-                    : "⚠️ Vehicle type does not match the stored information. Please verify manually."}
+                    ? "✅ Loại xe khớp với thông tin đã lưu."
+                    : "⚠️ Loại xe không khớp với thông tin đã lưu. Vui lòng xác minh thủ công."}
                 </Alert>
               )}
 
               {verificationResult.manualSelection && (
                 <Alert variant="info">
-                  <strong>Manual Selection:</strong> You have manually selected this vehicle for checkout.
+                  <strong>Chọn thủ công:</strong> Bạn đã chọn xe này thủ công để đăng ký ra bãi.
                 </Alert>
               )}
 
@@ -350,15 +350,15 @@ const CheckOut = () => {
                           role="status"
                           aria-hidden="true"
                         />
-                        {' '}Processing Checkout...
+                        {' '}Đang xử lý đăng ký ra...
                       </>
-                    ) : 'Confirm & Check Out Vehicle'}
+                    ) : 'Xác nhận & Đăng ký xe ra'}
                   </Button>
                   <Button
                     variant="outline-secondary"
                     onClick={resetVerification}
                   >
-                    Try Another Photo
+                    Thử ảnh khác
                   </Button>
                 </div>
               </Form>
@@ -376,27 +376,27 @@ const CheckOut = () => {
       {result && (
         <Card className="mt-3 vehicle-info" border={result.isMonthlyRegistered ? "success" : ""}>
           <Card.Header as="h5" className={result.isMonthlyRegistered ? "bg-success text-white" : ""}>
-            Vehicle Checked Out Successfully
-            {result.isMonthlyRegistered && " (Monthly Registered)"}
+            Đăng ký xe ra bãi thành công
+            {result.isMonthlyRegistered && " (Xe đăng ký tháng)"}
           </Card.Header>
           <Card.Body>
             <Card.Title>{result.vehicle.licensePlate}</Card.Title>
             {result.isMonthlyRegistered && (
               <Alert variant="success" className="mb-3">
-                <strong>Monthly Registered Vehicle:</strong> This vehicle has been automatically checked out without payment.
+                <strong>Xe đăng ký tháng:</strong> Xe này đã được tự động đăng ký ra bãi mà không cần thanh toán.
               </Alert>
             )}
             <Card.Text>
-              <strong>Vehicle ID:</strong> {result.vehicle.vehicleId}<br />
-              <strong>Vehicle Type:</strong> {result.vehicle.vehicleType}<br />
-              <strong>Slot:</strong> {result.vehicle.slotId}<br />
-              <strong>Entry Time:</strong> {new Date(result.vehicle.entryTime).toLocaleString()}<br />
-              <strong>Exit Time:</strong> {new Date(result.vehicle.exitTime).toLocaleString()}<br />
-              <strong>Parking Duration:</strong> {result.parkingDuration || 'N/A'}<br />
-              <strong>Status:</strong> {result.vehicle.status}<br />
-              <strong>Registration Type:</strong> {result.isMonthlyRegistered ?
-                <span className="text-success">Monthly Registered</span> :
-                <span>Casual</span>}
+              <strong>Mã xe:</strong> {result.vehicle.vehicleId}<br />
+              <strong>Loại xe:</strong> {result.vehicle.vehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
+              <strong>Vị trí đỗ:</strong> {result.vehicle.slotId}<br />
+              <strong>Thời gian vào:</strong> {new Date(result.vehicle.entryTime).toLocaleString()}<br />
+              <strong>Thời gian ra:</strong> {new Date(result.vehicle.exitTime).toLocaleString()}<br />
+              <strong>Thời gian đỗ xe:</strong> {result.parkingDuration || 'N/A'}<br />
+              <strong>Trạng thái:</strong> {result.vehicle.status === 'EXITED' ? 'Đã ra bãi' : result.vehicle.status}<br />
+              <strong>Loại đăng ký:</strong> {result.isMonthlyRegistered ?
+                <span className="text-success">Đăng ký tháng</span> :
+                <span>Vãng lai</span>}
             </Card.Text>
           </Card.Body>
         </Card>
@@ -405,30 +405,30 @@ const CheckOut = () => {
       {step === 'select' && (
         <div className="mb-4">
           <p className="lead">
-            Manual Selection: Choose a vehicle from the list below.
+            Chọn thủ công: Chọn một xe từ danh sách dưới đây.
           </p>
           <Alert variant="info">
-            <strong>Note:</strong> This is a fallback option when photo recognition fails.
+            <strong>Lưu ý:</strong> Đây là phương án dự phòng khi nhận diện ảnh thất bại.
             <Button
               variant="link"
               className="p-0 ms-2"
               onClick={resetVerification}
             >
-              Return to photo identification
+              Quay lại nhận diện ảnh
             </Button>
           </Alert>
-          <h2 className="mt-4">Currently Parked Vehicles</h2>
+          <h2 className="mt-4">Xe đang đỗ trong bãi</h2>
         </div>
       )}
       {fetchingVehicles ? (
         <div className="text-center">
           <Spinner animation="border" role="status">
-            <span className="visually-hidden">Loading...</span>
+            <span className="visually-hidden">Đang tải...</span>
           </Spinner>
         </div>
       ) : step === 'select' && parkedVehicles.length === 0 ? (
         <Alert variant="info">
-          No vehicles currently parked.
+          Không có xe nào đang đỗ trong bãi.
         </Alert>
       ) : step === 'select' ? (
         <div className="row">
@@ -443,12 +443,12 @@ const CheckOut = () => {
                 <Card.Body>
                   <Card.Title>{vehicle.licensePlate}</Card.Title>
                   <Card.Text>
-                    <strong>Vehicle ID:</strong> {vehicle.vehicleId}<br />
-                    <strong>Vehicle Type:</strong> {vehicle.vehicleType}<br />
-                    <strong>Slot:</strong> {vehicle.slotId}<br />
-                    <strong>Entry Time:</strong> {new Date(vehicle.entryTime).toLocaleString()}<br />
+                    <strong>Mã xe:</strong> {vehicle.vehicleId}<br />
+                    <strong>Loại xe:</strong> {vehicle.vehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
+                    <strong>Vị trí đỗ:</strong> {vehicle.slotId}<br />
+                    <strong>Thời gian vào:</strong> {new Date(vehicle.entryTime).toLocaleString()}<br />
                     {vehicle.isMonthlyRegistered && (
-                      <span className="badge bg-success mt-2">Monthly Registered</span>
+                      <span className="badge bg-success mt-2">Đăng ký tháng</span>
                     )}
                   </Card.Text>
                   <Button
@@ -459,7 +459,7 @@ const CheckOut = () => {
                       handleVehicleSelect(vehicle);
                     }}
                   >
-                    Select
+                    Chọn
                   </Button>
                 </Card.Body>
               </Card>

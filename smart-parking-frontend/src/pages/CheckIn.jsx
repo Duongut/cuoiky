@@ -25,7 +25,7 @@ const CheckIn = () => {
     event.preventDefault();
 
     if (!selectedFile) {
-      setError('Please select an image file');
+      setError('Vui lòng chọn một tệp hình ảnh');
       return;
     }
 
@@ -53,7 +53,7 @@ const CheckIn = () => {
         setDuplicateVehicle(error.response.data.existingVehicle);
       }
 
-      setError(error.response?.data?.error || 'An error occurred while checking in the vehicle');
+      setError(error.response?.data?.error || 'Đã xảy ra lỗi khi đăng ký xe vào bãi');
     } finally {
       setLoading(false);
     }
@@ -61,27 +61,27 @@ const CheckIn = () => {
 
   return (
     <div>
-      <h1>Vehicle Check-In</h1>
+      <h1>Đăng ký xe vào bãi</h1>
 
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3">
-          <Form.Label>Upload Vehicle Image</Form.Label>
+          <Form.Label>Tải lên hình ảnh xe</Form.Label>
           <Form.Control
             type="file"
             accept="image/*"
             onChange={handleFileChange}
           />
           <Form.Text className="text-muted">
-            Upload an image of the vehicle showing the license plate clearly.
+            Tải lên hình ảnh xe với biển số rõ ràng.
           </Form.Text>
         </Form.Group>
 
         {previewUrl && (
           <div className="mb-3">
-            <p>Preview:</p>
+            <p>Xem trước:</p>
             <img
               src={previewUrl}
-              alt="Preview"
+              alt="Xem trước"
               style={{ maxWidth: '100%', maxHeight: '300px' }}
               className="img-thumbnail"
             />
@@ -102,9 +102,9 @@ const CheckIn = () => {
                 role="status"
                 aria-hidden="true"
               />
-              {' '}Processing...
+              {' '}Đang xử lý...
             </>
-          ) : 'Check In Vehicle'}
+          ) : 'Đăng ký xe vào'}
         </Button>
       </Form>
 
@@ -116,24 +116,24 @@ const CheckIn = () => {
 
       {duplicateVehicle && (
         <Card className="mt-3 vehicle-info border-warning">
-          <Card.Header as="h5" className="bg-warning text-dark">Vehicle Already Parked</Card.Header>
+          <Card.Header as="h5" className="bg-warning text-dark">Xe đã được đăng ký vào bãi</Card.Header>
           <Card.Body>
             <Card.Title>{duplicateVehicle.licensePlate}</Card.Title>
             <Row>
               <Col md={6}>
                 <Card.Text>
-                  <strong>Vehicle ID:</strong> {duplicateVehicle.vehicleId}<br />
-                  <strong>Vehicle Type:</strong> {duplicateVehicle.vehicleType}<br />
-                  <strong>Assigned Slot:</strong> {duplicateVehicle.slotId}<br />
-                  <strong>Entry Time:</strong> {new Date(duplicateVehicle.entryTime).toLocaleString()}<br />
-                  <strong>Status:</strong> {duplicateVehicle.status}
+                  <strong>Mã xe:</strong> {duplicateVehicle.vehicleId}<br />
+                  <strong>Loại xe:</strong> {duplicateVehicle.vehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
+                  <strong>Vị trí đỗ:</strong> {duplicateVehicle.slotId}<br />
+                  <strong>Thời gian vào:</strong> {new Date(duplicateVehicle.entryTime).toLocaleString()}<br />
+                  <strong>Trạng thái:</strong> {duplicateVehicle.status === 'PARKING' ? 'Đang đỗ' : duplicateVehicle.status}
                 </Card.Text>
               </Col>
               <Col md={6}>
                 <Alert variant="info">
                   <p className="mb-0">
-                    <strong>Note:</strong> This vehicle is already parked in the system.
-                    You cannot check in the same vehicle twice.
+                    <strong>Lưu ý:</strong> Xe này đã được đăng ký vào bãi.
+                    Bạn không thể đăng ký cùng một xe hai lần.
                   </p>
                 </Alert>
                 <div className="d-grid gap-2">
@@ -141,7 +141,7 @@ const CheckIn = () => {
                     variant="outline-primary"
                     href="/checkout"
                   >
-                    Go to Check-Out
+                    Đến trang đăng ký xe ra
                   </Button>
                 </div>
               </Col>
@@ -152,15 +152,15 @@ const CheckIn = () => {
 
       {result && (
         <Card className="mt-3 vehicle-info">
-          <Card.Header as="h5">Vehicle Checked In Successfully</Card.Header>
+          <Card.Header as="h5">Đăng ký xe vào bãi thành công</Card.Header>
           <Card.Body>
             <Card.Title>{result.vehicle.licensePlate}</Card.Title>
             <Card.Text>
-              <strong>Vehicle ID:</strong> {result.vehicle.vehicleId}<br />
-              <strong>Vehicle Type:</strong> {result.vehicle.vehicleType}<br />
-              <strong>Assigned Slot:</strong> {result.vehicle.slotId}<br />
-              <strong>Entry Time:</strong> {new Date(result.vehicle.entryTime).toLocaleString()}<br />
-              <strong>Status:</strong> {result.vehicle.status}
+              <strong>Mã xe:</strong> {result.vehicle.vehicleId}<br />
+              <strong>Loại xe:</strong> {result.vehicle.vehicleType === 'CAR' ? 'Ô tô' : 'Xe máy'}<br />
+              <strong>Vị trí đỗ:</strong> {result.vehicle.slotId}<br />
+              <strong>Thời gian vào:</strong> {new Date(result.vehicle.entryTime).toLocaleString()}<br />
+              <strong>Trạng thái:</strong> {result.vehicle.status === 'PARKING' ? 'Đang đỗ' : result.vehicle.status}
             </Card.Text>
           </Card.Body>
         </Card>

@@ -55,7 +55,7 @@ const Dashboard = () => {
     reservedSlots: 1,
     revenue: 500000
   });
-  
+
   const [dateRange, setDateRange] = useState(7); // Default to 7 days
   const [activityData, setActivityData] = useState(generateMockActivityData());
   const [exitedVehiclesCount, setExitedVehiclesCount] = useState(0);
@@ -65,7 +65,7 @@ const Dashboard = () => {
     revenue: { value: 12, isPositive: true },
     monthly: { value: 0, isPositive: false }
   });
-  
+
   // Generate mock activity data for the last 7 days
   function generateMockActivityData(days = 7) {
     const labels = [];
@@ -147,7 +147,7 @@ const Dashboard = () => {
           revenue: { value: Math.floor(Math.random() * 20), isPositive: Math.random() > 0.3 },
           monthly: { value: Math.floor(Math.random() * 5), isPositive: Math.random() > 0.5 }
         };
-        
+
         setDailyTrends(mockTrends);
 
         // Fetch today's revenue
@@ -305,7 +305,7 @@ const Dashboard = () => {
         // Use mock data if API fails
         setParkedVehicles(mockVehicles);
         setRecentVehicles(mockVehicles);
-        
+
         // Create a map of mock vehicles indexed by vehicle ID
         const mockVehiclesMap = {};
         mockVehicles.forEach(vehicle => {
@@ -317,7 +317,7 @@ const Dashboard = () => {
           };
         });
         setVehiclesMap(mockVehiclesMap);
-        
+
         setExitedVehiclesCount(3);
       }
 
@@ -649,7 +649,7 @@ const Dashboard = () => {
   return (
     <div className="dashboard">
       <div className="d-flex justify-content-between align-items-center mb-4">
-        <h1 className="mb-0">Dashboard</h1>
+        <h1 className="mb-0">Trang chủ</h1>
         <div className="d-flex align-items-center">
           {expiringVehicles.length > 0 && (
             <div className="alert alert-warning py-1 px-3 me-3 mb-0 d-flex align-items-center">

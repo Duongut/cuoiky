@@ -478,9 +478,9 @@ const Settings = () => {
     <Container fluid className="py-4">
       <h2 className="mb-4">
         <FaCog className="me-2" />
-        System Settings
+        Cài đặt hệ thống
       </h2>
-      <p className="text-muted">Configure system settings such as parking fees and discounts</p>
+      <p className="text-muted">Cấu hình các thiết lập hệ thống như phí đỗ xe và chiết khấu</p>
 
       {error && <Alert variant="danger">{error}</Alert>}
       {success && <Alert variant="success">{success}</Alert>}
@@ -490,39 +490,39 @@ const Settings = () => {
         onSelect={(k) => setActiveTab(k)}
         className="mb-4"
       >
-        <Tab eventKey="employees" title={<span><FaUsers className="me-2" />Employee Management</span>}>
+        <Tab eventKey="employees" title={<span><FaUsers className="me-2" />Quản lý nhân viên</span>}>
           <Card className="shadow-sm">
             <Card.Header className="bg-primary text-white d-flex justify-content-between align-items-center">
-              <h5 className="mb-0">Employee Management</h5>
+              <h5 className="mb-0">Quản lý nhân viên</h5>
               <Button variant="light" size="sm" onClick={() => openEmployeeModal()}>
-                <FaUserPlus className="me-1" /> Add Employee
+                <FaUserPlus className="me-1" /> Thêm nhân viên
               </Button>
             </Card.Header>
             <Card.Body>
               {loadingEmployees ? (
                 <div className="text-center py-4">
                   <Spinner animation="border" role="status">
-                    <span className="visually-hidden">Loading employees...</span>
+                    <span className="visually-hidden">Đang tải danh sách nhân viên...</span>
                   </Spinner>
-                  <p className="mt-2">Loading employees...</p>
+                  <p className="mt-2">Đang tải danh sách nhân viên...</p>
                 </div>
               ) : (
                 <>
                   {employees.length === 0 ? (
                     <Alert variant="info">
-                      No employees found. Click "Add Employee" to create one.
+                      Chưa có nhân viên nào. Nhấn "Thêm nhân viên" để tạo mới.
                     </Alert>
                   ) : (
                     <Table striped bordered hover responsive>
                       <thead>
                         <tr>
-                          <th>Employee ID</th>
-                          <th>Username</th>
-                          <th>Name</th>
+                          <th>Mã nhân viên</th>
+                          <th>Tên đăng nhập</th>
+                          <th>Họ tên</th>
                           <th>Email</th>
-                          <th>Role</th>
-                          <th>Status</th>
-                          <th>Actions</th>
+                          <th>Vai trò</th>
+                          <th>Trạng thái</th>
+                          <th>Thao tác</th>
                         </tr>
                       </thead>
                       <tbody>
@@ -539,7 +539,7 @@ const Settings = () => {
                             </td>
                             <td>
                               <Badge bg={employee.isActive ? 'success' : 'danger'}>
-                                {employee.isActive ? 'Active' : 'Inactive'}
+                                {employee.isActive ? 'Hoạt động' : 'Không hoạt động'}
                               </Badge>
                             </td>
                             <td>
@@ -548,7 +548,7 @@ const Settings = () => {
                                 size="sm"
                                 className="me-1"
                                 onClick={() => openEmployeeModal(employee)}
-                                title="Edit"
+                                title="Sửa"
                               >
                                 <FaUserEdit />
                               </Button>
@@ -557,7 +557,7 @@ const Settings = () => {
                                 size="sm"
                                 className="me-1"
                                 onClick={() => openResetPasswordModal(employee)}
-                                title="Reset Password"
+                                title="Đặt lại mật khẩu"
                               >
                                 <FaKey />
                               </Button>
@@ -565,7 +565,7 @@ const Settings = () => {
                                 variant="outline-danger"
                                 size="sm"
                                 onClick={() => openDeleteModal(employee)}
-                                title="Delete"
+                                title="Xóa"
                               >
                                 <FaTrash />
                               </Button>
@@ -581,18 +581,18 @@ const Settings = () => {
           </Card>
         </Tab>
 
-        <Tab eventKey="parking-fees" title={<span><FaMoneyBillWave className="me-2" />Parking Fees</span>}>
+        <Tab eventKey="parking-fees" title={<span><FaMoneyBillWave className="me-2" />Phí đỗ xe</span>}>
           <Card className="shadow-sm">
             <Card.Header className="bg-primary text-white">
-              <h5 className="mb-0">Parking Fee Settings</h5>
+              <h5 className="mb-0">Cài đặt phí đỗ xe</h5>
             </Card.Header>
             <Card.Body>
               <Form>
                 <Row>
                   <Col md={6}>
-                    <h6 className="mb-3">Walk-in (Casual) Parking Fees</h6>
+                    <h6 className="mb-3">Phí đỗ xe lẻ (Vãng lai)</h6>
                     <Form.Group className="mb-3">
-                      <Form.Label>Motorbike Fee (VND)</Form.Label>
+                      <Form.Label>Phí xe máy (VND)</Form.Label>
                       <Form.Control
                         type="number"
                         name="casualMotorbikeFee"
@@ -601,12 +601,12 @@ const Settings = () => {
                         min="0"
                       />
                       <Form.Text className="text-muted">
-                        Fee for casual motorbike parking per session
+                        Phí đỗ xe máy vãng lai cho mỗi lượt
                       </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                      <Form.Label>Car Fee (VND)</Form.Label>
+                      <Form.Label>Phí ô tô (VND)</Form.Label>
                       <Form.Control
                         type="number"
                         name="casualCarFee"
@@ -615,15 +615,15 @@ const Settings = () => {
                         min="0"
                       />
                       <Form.Text className="text-muted">
-                        Fee for casual car parking per session
+                        Phí đỗ ô tô vãng lai cho mỗi lượt
                       </Form.Text>
                     </Form.Group>
                   </Col>
 
                   <Col md={6}>
-                    <h6 className="mb-3">Monthly Parking Fees (Base Rate)</h6>
+                    <h6 className="mb-3">Phí đỗ xe tháng (Giá cơ bản)</h6>
                     <Form.Group className="mb-3">
-                      <Form.Label>Monthly Motorbike Fee (VND)</Form.Label>
+                      <Form.Label>Phí xe máy tháng (VND)</Form.Label>
                       <Form.Control
                         type="number"
                         name="monthlyMotorbikeFee"
@@ -632,12 +632,12 @@ const Settings = () => {
                         min="0"
                       />
                       <Form.Text className="text-muted">
-                        Base fee for monthly motorbike parking (per month)
+                        Phí cơ bản cho đỗ xe máy theo tháng (mỗi tháng)
                       </Form.Text>
                     </Form.Group>
 
                     <Form.Group className="mb-3">
-                      <Form.Label>Monthly Car Fee (VND)</Form.Label>
+                      <Form.Label>Phí ô tô tháng (VND)</Form.Label>
                       <Form.Control
                         type="number"
                         name="monthlyCarFee"
@@ -646,7 +646,7 @@ const Settings = () => {
                         min="0"
                       />
                       <Form.Text className="text-muted">
-                        Base fee for monthly car parking (per month)
+                        Phí cơ bản cho đỗ ô tô theo tháng (mỗi tháng)
                       </Form.Text>
                     </Form.Group>
                   </Col>
@@ -660,7 +660,7 @@ const Settings = () => {
                     disabled={saving}
                   >
                     <FaUndo className="me-2" />
-                    Reset
+                    Đặt lại
                   </Button>
                   <Button
                     variant="primary"
@@ -676,12 +676,12 @@ const Settings = () => {
                           role="status"
                           aria-hidden="true"
                         />
-                        <span className="ms-2">Saving...</span>
+                        <span className="ms-2">Đang lưu...</span>
                       </>
                     ) : (
                       <>
                         <FaSave className="me-2" />
-                        Save Changes
+                        Lưu thay đổi
                       </>
                     )}
                   </Button>

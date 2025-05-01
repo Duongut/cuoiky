@@ -500,7 +500,7 @@ const MonthlyRegistration = () => {
                             value={formData.customerName}
                             onChange={handleInputChange}
                             required
-                            placeholder="Nhập họ tên khách hàng"
+                            placeholder="Nhập họ và tên khách hàng"
                           />
                         </Form.Group>
                       </Col>
@@ -528,7 +528,7 @@ const MonthlyRegistration = () => {
                             value={formData.customerEmail}
                             onChange={handleInputChange}
                             required
-                            placeholder="Nhập email khách hàng"
+                            placeholder="Nhập địa chỉ email khách hàng"
                           />
                         </Form.Group>
                       </Col>

@@ -18,12 +18,12 @@ const ChangePasswordModal = ({ show, onHide }) => {
 
     // Validate passwords
     if (newPassword !== confirmPassword) {
-      setError('New passwords do not match');
+      setError('Mật khẩu mới không khớp');
       return;
     }
 
     if (newPassword.length < 6) {
-      setError('New password must be at least 6 characters long');
+      setError('Mật khẩu mới phải có ít nhất 6 ký tự');
       return;
     }
 
@@ -34,15 +34,15 @@ const ChangePasswordModal = ({ show, onHide }) => {
         currentPassword,
         newPassword
       });
-      
+
       setSuccess(true);
       toast.success('Password changed successfully');
-      
+
       // Reset form
       setCurrentPassword('');
       setNewPassword('');
       setConfirmPassword('');
-      
+
       // Close modal after 2 seconds
       setTimeout(() => {
         onHide();
@@ -72,16 +72,16 @@ const ChangePasswordModal = ({ show, onHide }) => {
       <Modal.Header closeButton>
         <Modal.Title>
           <FaKey className="me-2" />
-          Change Password
+          Đổi mật khẩu
         </Modal.Title>
       </Modal.Header>
       <Modal.Body>
         {error && <Alert variant="danger">{error}</Alert>}
-        {success && <Alert variant="success">Password changed successfully!</Alert>}
-        
+        {success && <Alert variant="success">Đổi mật khẩu thành công!</Alert>}
+
         <Form onSubmit={handleSubmit}>
           <Form.Group className="mb-3">
-            <Form.Label>Current Password</Form.Label>
+            <Form.Label>Mật khẩu hiện tại</Form.Label>
             <Form.Control
               type="password"
               value={currentPassword}
@@ -90,9 +90,9 @@ const ChangePasswordModal = ({ show, onHide }) => {
               disabled={loading || success}
             />
           </Form.Group>
-          
+
           <Form.Group className="mb-3">
-            <Form.Label>New Password</Form.Label>
+            <Form.Label>Mật khẩu mới</Form.Label>
             <Form.Control
               type="password"
               value={newPassword}
@@ -101,12 +101,12 @@ const ChangePasswordModal = ({ show, onHide }) => {
               disabled={loading || success}
             />
             <Form.Text className="text-muted">
-              Password must be at least 6 characters long.
+              Mật khẩu phải có ít nhất 6 ký tự.
             </Form.Text>
           </Form.Group>
-          
+
           <Form.Group className="mb-3">
-            <Form.Label>Confirm New Password</Form.Label>
+            <Form.Label>Xác nhận mật khẩu mới</Form.Label>
             <Form.Control
               type="password"
               value={confirmPassword}
@@ -115,14 +115,14 @@ const ChangePasswordModal = ({ show, onHide }) => {
               disabled={loading || success}
             />
           </Form.Group>
-          
+
           <div className="d-flex justify-content-end">
             <Button variant="secondary" onClick={handleClose} className="me-2" disabled={loading}>
-              Cancel
+              Hủy
             </Button>
-            <Button 
-              variant="primary" 
-              type="submit" 
+            <Button
+              variant="primary"
+              type="submit"
               disabled={loading || success}
             >
               {loading ? (
@@ -135,10 +135,10 @@ const ChangePasswordModal = ({ show, onHide }) => {
                     aria-hidden="true"
                     className="me-2"
                   />
-                  Changing...
+                  Đang xử lý...
                 </>
               ) : (
-                'Change Password'
+                'Đổi mật khẩu'
               )}
             </Button>
           </div>

@@ -60,7 +60,7 @@ const Sidebar = ({ onToggle, userRole }) => {
                 {!isCollapsed && (
                   <div className="ms-2 user-details">
                     <div className="user-name">{user?.firstName} {user?.lastName}</div>
-                    <div className="user-role">{user?.role === 'ADMIN' ? 'Administrator' : 'Staff'}</div>
+                    <div className="user-role">{user?.role === 'ADMIN' ? 'Quản trị viên' : 'Nhân viên'}</div>
                     <div className="user-id small text-muted">ID: {user?.employeeId}</div>
                   </div>
                 )}
@@ -69,11 +69,11 @@ const Sidebar = ({ onToggle, userRole }) => {
 
             <Dropdown.Menu>
               <Dropdown.Item onClick={openChangePasswordModal}>
-                <FaKey className="me-2" /> Change Password
+                <FaKey className="me-2" /> Đổi mật khẩu
               </Dropdown.Item>
               <Dropdown.Divider />
               <Dropdown.Item onClick={handleLogout}>
-                <FaSignOutAlt className="me-2" /> Logout
+                <FaSignOutAlt className="me-2" /> Đăng xuất
               </Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
@@ -88,7 +88,7 @@ const Sidebar = ({ onToggle, userRole }) => {
               <div className="menu-icon">
                 <FaChartBar />
               </div>
-              {!isCollapsed && <span className="ms-3">Dashboard</span>}
+              {!isCollapsed && <span className="ms-3">Trang chủ</span>}
             </div>
           </Nav.Link>
 
@@ -102,7 +102,7 @@ const Sidebar = ({ onToggle, userRole }) => {
               <div className="menu-icon">
                 <FaExchangeAlt />
               </div>
-              {!isCollapsed && <span className="ms-3">Access Control</span>}
+              {!isCollapsed && <span className="ms-3">Kiểm soát ra vào</span>}
             </div>
           </Nav.Link>
 
@@ -116,7 +116,7 @@ const Sidebar = ({ onToggle, userRole }) => {
               <div className="menu-icon">
                 <FaFileAlt />
               </div>
-              {!isCollapsed && <span className="ms-3">Reports</span>}
+              {!isCollapsed && <span className="ms-3">Báo cáo</span>}
             </div>
           </Nav.Link>
 
@@ -145,7 +145,7 @@ const Sidebar = ({ onToggle, userRole }) => {
                 <div className="menu-icon">
                   <FaCog />
                 </div>
-                {!isCollapsed && <span className="ms-3">Settings</span>}
+                {!isCollapsed && <span className="ms-3">Cài đặt</span>}
               </div>
             </Nav.Link>
           )}

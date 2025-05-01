@@ -29,7 +29,7 @@ const AccessControl = () => {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
   const [vehicleDetailLoading, setVehicleDetailLoading] = useState(false);
-  
+
   const [licensePlate, setLicensePlate] = useState('');
   const [vehicleType, setVehicleType] = useState('ALL');
   const [status, setStatus] = useState('ALL');
@@ -38,14 +38,14 @@ const AccessControl = () => {
   const [endDate, setEndDate] = useState(new Date());
   const [sortBy, setSortBy] = useState('entryTime');
   const [sortOrder, setSortOrder] = useState('desc');
-  
+
   const [showVehicleModal, setShowVehicleModal] = useState(false);
   const [selectedVehicle, setSelectedVehicle] = useState(null);
   const [vehicleHistory, setVehicleHistory] = useState([]);
   const [weeklyActivity, setWeeklyActivity] = useState(null);
-  
+
   const [isSearching, setIsSearching] = useState(false);
-  
+
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(10);
   const [totalItems, setTotalItems] = useState(0);
@@ -62,7 +62,7 @@ const AccessControl = () => {
       const intervalId = setInterval(() => {
         fetchVehicleHistory(true);
       }, 60000);
-      
+
       return () => clearInterval(intervalId);
     }
   }, [activeTab]);
@@ -86,7 +86,7 @@ const AccessControl = () => {
     try {
       if (!silentRefresh) setLoading(true);
       setError(null);
-      
+
       const params = new URLSearchParams();
       params.append('startDate', startDate.toISOString());
       params.append('endDate', endDate.toISOString());
@@ -94,14 +94,14 @@ const AccessControl = () => {
       params.append('pageSize', itemsPerPage);
       params.append('sortBy', sortBy);
       params.append('sortOrder', sortOrder);
-      
+
       if (licensePlate) params.append('licensePlate', licensePlate);
       if (vehicleType !== 'ALL') params.append('vehicleType', vehicleType);
       if (status !== 'ALL') params.append('status', status);
       if (parkingLocation) params.append('slotId', parkingLocation);
-      
+
       const response = await axios.get(`/api/vehicle/history?${params.toString()}`);
-      
+
       if (response.data && response.data.items) {
         setVehicles(response.data.items);
         setTotalItems(response.data.totalCount || response.data.items.length);
@@ -137,7 +137,7 @@ const AccessControl = () => {
     setSortBy('entryTime');
     setSortOrder('desc');
     setCurrentPage(1);
-    
+
     fetchVehicleHistory();
   };
 
@@ -159,14 +159,14 @@ const AccessControl = () => {
       const params = new URLSearchParams();
       params.append('startDate', startDate.toISOString());
       params.append('endDate', endDate.toISOString());
-      
+
       if (licensePlate) params.append('licensePlate', licensePlate);
       if (vehicleType !== 'ALL') params.append('vehicleType', vehicleType);
       if (status !== 'ALL') params.append('status', status);
       if (parkingLocation) params.append('slotId', parkingLocation);
-      
+
       const url = `/api/vehicle/export/${format}?${params.toString()}`;
-      
+
       window.open(url, '_blank');
       toast.success(`Xuất báo cáo định dạng ${format.toUpperCase()} thành công`);
     } catch (err) {
@@ -182,18 +182,18 @@ const AccessControl = () => {
   const openVehicleDetail = async (vehicle) => {
     setSelectedVehicle(vehicle);
     setShowVehicleModal(true);
-    
+
     try {
       setVehicleDetailLoading(true);
-      
+
       const [historyResponse, activityResponse] = await Promise.all([
         axios.get(`/api/vehicle/${vehicle.vehicleId}/history`),
         axios.get(`/api/vehicle/${vehicle.vehicleId}/activity`)
       ]);
-      
+
       setVehicleHistory(historyResponse.data || []);
       setWeeklyActivity(activityResponse.data || null);
-      
+
       setVehicleDetailLoading(false);
     } catch (error) {
       console.error('Error fetching vehicle details:', error);
@@ -230,14 +230,14 @@ const AccessControl = () => {
 
   const calculateDuration = (entryTime, exitTime) => {
     if (!entryTime) return 'N/A';
-    
+
     const start = new Date(entryTime);
     const end = exitTime ? new Date(exitTime) : new Date();
-    
+
     const diffMs = end - start;
     const diffHrs = Math.floor(diffMs / (1000 * 60 * 60));
     const diffMins = Math.floor((diffMs % (1000 * 60 * 60)) / (1000 * 60));
-    
+
     if (diffHrs > 0) {
       return `${diffHrs} giờ ${diffMins} phút`;
     } else {
@@ -247,17 +247,17 @@ const AccessControl = () => {
 
   const renderPagination = () => {
     const pages = [];
-    
+
     const startPage = Math.max(1, currentPage - 2);
     const endPage = Math.min(totalPages, startPage + 4);
 
     pages.push(
-      <Button 
-        key="prev" 
-        variant="outline-secondary" 
+      <Button
+        key="prev"
+        variant="outline-secondary"
         size="sm"
         className="me-1"
-        disabled={currentPage === 1} 
+        disabled={currentPage === 1}
         onClick={() => handlePageChange(currentPage - 1)}
       >
         &laquo;
@@ -266,8 +266,8 @@ const AccessControl = () => {
 
     if (startPage > 1) {
       pages.push(
-        <Button 
-          key="1" 
+        <Button
+          key="1"
           variant={currentPage === 1 ? "primary" : "outline-secondary"}
           size="sm"
           className="me-1"
@@ -276,7 +276,7 @@ const AccessControl = () => {
           1
         </Button>
       );
-      
+
       if (startPage > 2) {
         pages.push(<span key="ellipsis1" className="mx-1">...</span>);
       }
@@ -284,10 +284,10 @@ const AccessControl = () => {
 
     for (let i = startPage; i <= endPage; i++) {
       pages.push(
-        <Button 
-          key={i} 
+        <Button
+          key={i}
           variant={currentPage === i ? "primary" : "outline-secondary"}
-          size="sm" 
+          size="sm"
           className="me-1"
           onClick={() => handlePageChange(i)}
         >
@@ -302,8 +302,8 @@ const AccessControl = () => {
 
     if (endPage < totalPages) {
       pages.push(
-        <Button 
-          key={totalPages} 
+        <Button
+          key={totalPages}
           variant={currentPage === totalPages ? "primary" : "outline-secondary"}
           size="sm"
           className="me-1"
@@ -315,11 +315,11 @@ const AccessControl = () => {
     }
 
     pages.push(
-      <Button 
-        key="next" 
-        variant="outline-secondary" 
+      <Button
+        key="next"
+        variant="outline-secondary"
         size="sm"
-        disabled={currentPage === totalPages} 
+        disabled={currentPage === totalPages}
         onClick={() => handlePageChange(currentPage + 1)}
       >
         &raquo;
@@ -360,7 +360,7 @@ const AccessControl = () => {
             </Dropdown>
           </div>
         </div>
-        
+
         <Card className="mb-4">
           <Card.Header>
             <FaFilter className="me-2" />
@@ -487,9 +487,9 @@ const AccessControl = () => {
             </Row>
           </Card.Body>
         </Card>
-        
+
         {error && <Alert variant="danger">{error}</Alert>}
-        
+
         <Card>
           <Card.Header className="d-flex justify-content-between align-items-center">
             <div>Danh sách xe ra vào</div>
@@ -589,19 +589,19 @@ const AccessControl = () => {
   return (
     <Container fluid className="access-control-page">
       <h1 className="mb-4">Quản lý ra vào</h1>
-      
+
       <Tabs
         activeKey={activeTab}
         onSelect={(k) => setActiveTab(k)}
         className="mb-4"
       >
-        <Tab eventKey="manual-checkin" title={<span><FaCarSide className="me-2" />Check-in thủ công</span>}>
+        <Tab eventKey="manual-checkin" title={<span><FaCarSide className="me-2" />Đăng ký xe vào</span>}>
           <CheckIn />
         </Tab>
-        <Tab eventKey="manual-checkout" title={<span><FaCarSide className="me-2" style={{transform: 'scaleX(-1)'}} />Check-out thủ công</span>}>
+        <Tab eventKey="manual-checkout" title={<span><FaCarSide className="me-2" style={{transform: 'scaleX(-1)'}} />Đăng ký xe ra</span>}>
           <CheckOut />
         </Tab>
-        <Tab eventKey="automatic" title={<span><FaCamera className="me-2" />Tự động (Camera)</span>}>
+        <Tab eventKey="automatic" title={<span><FaCamera className="me-2" />Giám sát camera</span>}>
           <CameraMonitoring />
         </Tab>
         <Tab eventKey="vehicle-history" title={<span><FaHistory className="me-2" />Lịch sử ra vào</span>}>
@@ -609,10 +609,10 @@ const AccessControl = () => {
         </Tab>
       </Tabs>
 
-      <Modal 
-        show={showVehicleModal} 
-        onHide={() => setShowVehicleModal(false)} 
-        size="lg" 
+      <Modal
+        show={showVehicleModal}
+        onHide={() => setShowVehicleModal(false)}
+        size="lg"
         centered
       >
         <Modal.Header closeButton>
@@ -732,39 +732,39 @@ const AccessControl = () => {
           cursor: pointer;
           user-select: none;
         }
-        
+
         .access-control-page .sortable:hover {
           background-color: #f8f9fa;
         }
-        
+
         .access-control-page .table-responsive {
           max-height: 600px;
           overflow-y: auto;
         }
-        
+
         @media print {
-          .nav-tabs, .btn, .dropdown, .form-control, .input-group, 
+          .nav-tabs, .btn, .dropdown, .form-control, .input-group,
           .card-header button, .pagination, .modal, .tab-pane:not(.active) {
             display: none !important;
           }
-          
+
           .card {
             box-shadow: none !important;
             border: 1px solid #ddd !important;
           }
-          
+
           .container, .container-fluid {
             width: 100% !important;
             padding: 0 !important;
             margin: 0 !important;
           }
-          
+
           h1 {
             font-size: 24pt !important;
             text-align: center !important;
             margin: 20pt 0 !important;
           }
-          
+
           .card-body {
             padding: 10pt !important;
           }

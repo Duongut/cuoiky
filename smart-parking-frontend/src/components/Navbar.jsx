@@ -8,12 +8,12 @@ const Navbar = () => {
   return (
     <BootstrapNavbar bg="dark" variant="dark" expand="lg">
       <Container>
-        <BootstrapNavbar.Brand as={Link} to="/">Smart Parking System</BootstrapNavbar.Brand>
+        <BootstrapNavbar.Brand as={Link} to="/">Hệ Thống Bãi Đỗ Xe Thông Minh</BootstrapNavbar.Brand>
         <BootstrapNavbar.Toggle aria-controls="basic-navbar-nav" />
         <BootstrapNavbar.Collapse id="basic-navbar-nav">
           <Nav className="me-auto">
             <Nav.Link as={Link} to="/" active={location.pathname === '/'}>
-              Dashboard
+              Trang chủ
             </Nav.Link>
             <Nav.Link
               as={Link}
@@ -23,10 +23,10 @@ const Navbar = () => {
                      location.pathname === '/check-out' ||
                      location.pathname === '/cameras'}
             >
-              Access Control
+              Kiểm soát ra vào
             </Nav.Link>
             <Nav.Link as={Link} to="/reports" active={location.pathname === '/reports'}>
-              Reports
+              Báo cáo
             </Nav.Link>
             <Nav.Link as={Link} to="/monthly-registration" active={location.pathname === '/monthly-registration'}>
               Đăng ký xe tháng

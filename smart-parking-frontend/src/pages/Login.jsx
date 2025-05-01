@@ -64,12 +64,12 @@ const Login = ({ onLogin }) => {
         }
       }
 
-      toast.success('Login successful!');
+      toast.success('Đăng nhập thành công!');
       navigate('/');
     } catch (err) {
       console.error('Login error:', err);
-      setError(err.response?.data?.error || 'Invalid username or password');
-      toast.error('Login failed. Please check your credentials.');
+      setError(err.response?.data?.error || 'Tên đăng nhập hoặc mật khẩu không đúng');
+      toast.error('Đăng nhập thất bại. Vui lòng kiểm tra lại thông tin đăng nhập.');
     } finally {
       setLoading(false);
     }
@@ -83,9 +83,9 @@ const Login = ({ onLogin }) => {
             <Card.Header className="bg-primary text-white text-center py-4">
               <div className="d-flex justify-content-center align-items-center mb-2">
                 <FaParking size={30} className="me-2" />
-                <h3 className="mb-0">Smart Parking System</h3>
+                <h3 className="mb-0">Hệ Thống Bãi Đỗ Xe Thông Minh</h3>
               </div>
-              <p className="mb-0">Sign in to your account</p>
+              <p className="mb-0">Đăng nhập vào tài khoản</p>
             </Card.Header>
             <Card.Body className="p-4">
               {error && <Alert variant="danger">{error}</Alert>}
@@ -97,7 +97,7 @@ const Login = ({ onLogin }) => {
                   </Form.Label>
                   <Form.Control
                     type="text"
-                    placeholder="Enter your username"
+                    placeholder="Nhập tên đăng nhập"
                     value={username}
                     onChange={(e) => setUsername(e.target.value)}
                     required
@@ -112,7 +112,7 @@ const Login = ({ onLogin }) => {
                   </Form.Label>
                   <Form.Control
                     type="password"
-                    placeholder="Enter your password"
+                    placeholder="Nhập mật khẩu"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
@@ -137,10 +137,10 @@ const Login = ({ onLogin }) => {
                           aria-hidden="true"
                           className="me-2"
                         />
-                        Signing in...
+                        Đang đăng nhập...
                       </>
                     ) : (
-                      'Sign In'
+                      'Đăng nhập'
                     )}
                   </Button>
                 </div>
@@ -148,7 +148,7 @@ const Login = ({ onLogin }) => {
             </Card.Body>
             <Card.Footer className="text-center py-3">
               <div className="small">
-                <Link to="/forgot-password">Forgot password?</Link>
+                <Link to="/forgot-password">Quên mật khẩu?</Link>
               </div>
             </Card.Footer>
           </Card>
