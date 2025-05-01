@@ -1,0 +1,225 @@
+/* Modern Dashboard Styles */
+
+/* Font size utilities */
+.fs-7 {
+  font-size: 0.875rem;
+}
+
+.fs-8 {
+  font-size: 0.75rem;
+}
+
+/* Soft background colors for badges */
+.bg-primary-soft {
+  background-color: rgba(13, 110, 253, 0.15) !important;
+  color: #0d6efd !important;
+}
+
+.bg-success-soft {
+  background-color: rgba(25, 135, 84, 0.15) !important;
+  color: #198754 !important;
+}
+
+.bg-danger-soft {
+  background-color: rgba(220, 53, 69, 0.15) !important;
+  color: #dc3545 !important;
+}
+
+.bg-warning-soft {
+  background-color: rgba(255, 193, 7, 0.15) !important;
+  color: #ffc107 !important;
+}
+
+.bg-info-soft {
+  background-color: rgba(13, 202, 240, 0.15) !important;
+  color: #0dcaf0 !important;
+}
+
+/* Modern stat cards */
+.stat-card {
+  transition: transform 0.2s, box-shadow 0.2s;
+  overflow: hidden;
+}
+
+.stat-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.15) !important;
+}
+
+.stat-icon-container {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.stat-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: contain;
+}
+
+/* Enhanced chart styles */
+.chart-container {
+  position: relative;
+  width: 100%;
+}
+
+.dashboard-card {
+  border-radius: 0.5rem;
+  border: none;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+  overflow: hidden;
+}
+
+.dashboard-card .card-header {
+  background-color: transparent;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+  padding: 1rem 1.25rem;
+}
+
+.dashboard-card .card-body {
+  padding: 1.25rem;
+}
+
+/* Animation for loading states */
+@keyframes pulse {
+  0% {
+    opacity: 0.6;
+  }
+  50% {
+    opacity: 1;
+  }
+  100% {
+    opacity: 0.6;
+  }
+}
+
+.placeholder-shimmer {
+  animation: pulse 1.5s infinite;
+}
+
+/* Modern data table styles */
+.modern-table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.modern-table th {
+  background-color: #f8f9fa;
+  color: #495057;
+  font-weight: 600;
+  text-transform: uppercase;
+  font-size: 0.75rem;
+  letter-spacing: 0.5px;
+  padding: 0.75rem 1rem;
+}
+
+.modern-table td {
+  padding: 0.75rem 1rem;
+  vertical-align: middle;
+  border-top: 1px solid #e9ecef;
+}
+
+.modern-table tbody tr {
+  transition: background-color 0.2s;
+}
+
+.modern-table tbody tr:hover {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+/* Status indicators */
+.status-indicator {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-right: 6px;
+}
+
+.status-available {
+  background-color: #198754;
+}
+
+.status-occupied {
+  background-color: #dc3545;
+}
+
+.status-reserved {
+  background-color: #ffc107;
+}
+
+/* Activity filter buttons */
+.time-filter-btn {
+  padding: 0.25rem 0.5rem;
+  font-size: 0.75rem;
+  border-radius: 0.25rem;
+  background-color: transparent;
+  border: 1px solid #dee2e6;
+  color: #6c757d;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.time-filter-btn:hover {
+  background-color: #f8f9fa;
+}
+
+.time-filter-btn.active {
+  background-color: #0d6efd;
+  border-color: #0d6efd;
+  color: white;
+}
+
+/* Modern parking visualizer */
+.parking-grid-modern {
+  display: grid;
+  grid-gap: 10px;
+  margin-top: 15px;
+}
+
+.parking-slot-modern {
+  border-radius: 8px;
+  padding: 12px;
+  text-align: center;
+  position: relative;
+  transition: all 0.2s;
+}
+
+.parking-slot-modern:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.parking-slot-modern .slot-id {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.parking-slot-modern .vehicle-type {
+  font-size: 0.75rem;
+  opacity: 0.8;
+}
+
+.parking-area-modern {
+  margin-bottom: 30px;
+  border-radius: 8px;
+  overflow: hidden;
+  box-shadow: 0 0.125rem 0.25rem rgba(0, 0, 0, 0.075);
+}
+
+.parking-area-header {
+  background-color: #f8f9fa;
+  padding: 12px 15px;
+  font-weight: bold;
+  border-bottom: 1px solid #e9ecef;
+}
+
+.parking-area-body {
+  padding: 15px;
+  background-color: white;
+}

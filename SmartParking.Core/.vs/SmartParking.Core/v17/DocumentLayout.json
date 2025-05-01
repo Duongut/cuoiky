@@ -1,0 +1,169 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\services\\mlmodelprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\services\\mlmodelprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\smartparking.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\smartparking.core.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\controllers\\vehiclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\controllers\\vehiclecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\models\\vehicleprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\models\\vehicleprediction.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\models\\imagedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\models\\imagedata.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\models\\vehicleuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\models\\vehicleuploaddto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|c:\\users\\admin\\source\\repos\\smartparking.core\\smartparking.core\\utils\\swaggerfileoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{000255DD-CC27-4204-8D8A-4A3AEF355FB3}|SmartParking.Core\\SmartParking.Core.csproj|solutionrelative:smartparking.core\\utils\\swaggerfileoperationfilter.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 5,
+          "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "MLModelPrediction.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Services\\MLModelPrediction.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Services\\MLModelPrediction.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Services\\MLModelPrediction.cs",
+              "RelativeToolTip": "SmartParking.Core\\Services\\MLModelPrediction.cs",
+              "ViewState": "AgIAAD4AAAAAAAAAAAAwwKAAAAA2AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T02:21:48.28Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "VehicleUploadDto.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\VehicleUploadDto.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Models\\VehicleUploadDto.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\VehicleUploadDto.cs",
+              "RelativeToolTip": "SmartParking.Core\\Models\\VehicleUploadDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T03:13:03.892Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SmartParking.Core.csproj",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\SmartParking.Core.csproj",
+              "RelativeDocumentMoniker": "SmartParking.Core\\SmartParking.Core.csproj",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\SmartParking.Core.csproj",
+              "RelativeToolTip": "SmartParking.Core\\SmartParking.Core.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2025-03-26T17:17:43.66Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "VehicleController.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Controllers\\VehicleController.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Controllers\\VehicleController.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Controllers\\VehicleController.cs",
+              "RelativeToolTip": "SmartParking.Core\\Controllers\\VehicleController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T02:22:05.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ImageData.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\ImageData.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Models\\ImageData.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\ImageData.cs",
+              "RelativeToolTip": "SmartParking.Core\\Models\\ImageData.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-26T17:19:23.025Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "VehiclePrediction.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\VehiclePrediction.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Models\\VehiclePrediction.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Models\\VehiclePrediction.cs",
+              "RelativeToolTip": "SmartParking.Core\\Models\\VehiclePrediction.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T02:21:19.475Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "SwaggerFileOperationFilter.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Utils\\SwaggerFileOperationFilter.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Utils\\SwaggerFileOperationFilter.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Utils\\SwaggerFileOperationFilter.cs",
+              "RelativeToolTip": "SmartParking.Core\\Utils\\SwaggerFileOperationFilter.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAmwCsAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T02:30:51.115Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Program.cs",
+              "RelativeDocumentMoniker": "SmartParking.Core\\Program.cs",
+              "ToolTip": "C:\\Users\\ADMIN\\source\\repos\\SmartParking.Core\\SmartParking.Core\\Program.cs",
+              "RelativeToolTip": "SmartParking.Core\\Program.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-03-27T02:25:21.831Z"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

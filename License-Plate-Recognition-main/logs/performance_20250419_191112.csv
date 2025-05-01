@@ -1,0 +1,2 @@
+timestamp,camera_id,fps,queue_size,detection_time,status,reconnect_attempts,cpu_percent,memory_percent,disk_usage
+1745064750.225098,IN-01,16.91,10,0,RUNNING,0,22.8,40.9,83.1

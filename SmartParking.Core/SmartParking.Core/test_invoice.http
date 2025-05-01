@@ -1,0 +1,20 @@
+@baseUrl = http://localhost:5125
+
+### Create a test transaction
+POST {{baseUrl}}/api/payment/cash
+Content-Type: application/json
+
+{
+  "vehicleId": "M001",
+  "amount": 30000,
+  "type": "CASUAL",
+  "description": "Parking fee for casual vehicle"
+}
+
+### Generate invoice for the transaction
+# Replace the transaction ID with the one from the previous response
+POST {{baseUrl}}/api/payment/invoice/generate/transaction_id_here
+
+### Download the invoice
+# Replace the file name with the one from the previous response
+GET {{baseUrl}}/api/payment/invoice/download/Invoice_M001_20230501_120000.pdf

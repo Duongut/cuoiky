@@ -1,0 +1,303 @@
+.app {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: row;
+}
+
+.sidebar {
+  width: 220px;
+  background-color: #f8f9fa;
+  color: #212529;
+  height: 100vh;
+  padding: 15px 0;
+  position: fixed;
+  left: 0;
+  top: 0;
+  border-right: 1px solid #dee2e6;
+  transition: all 0.3s ease;
+  z-index: 1000;
+}
+
+.sidebar.collapsed {
+  width: 70px;
+}
+
+/* Brand styling */
+.sidebar-header {
+  padding: 0 15px 10px 15px;
+  border-bottom: 1px solid #dee2e6;
+}
+
+.brand {
+  position: relative;
+  width: 100%;
+  padding: 5px 0;
+}
+
+.brand-text {
+  font-weight: 500;
+  line-height: 1.1;
+}
+
+.brand-title {
+  color: #212529;
+  font-size: 16px;
+}
+
+/* Collapse button */
+.collapse-btn {
+  background: transparent;
+  border: none;
+  color: #6c757d;
+  cursor: pointer;
+  padding: 0;
+  position: absolute;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  transition: all 0.3s ease;
+}
+
+.collapse-btn.collapsed-btn {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+.collapse-btn:hover {
+  color: #0d6efd;
+}
+
+/* Menu styling */
+.sidebar-menu {
+  padding: 0 10px;
+}
+
+.menu-icon {
+  width: 20px;
+  height: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 16px;
+  color: #6c757d;
+}
+
+.sidebar .nav-link {
+  padding: 10px 15px;
+  margin-bottom: 5px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  border-radius: 4px;
+  color: #212529;
+}
+
+.sidebar .nav-link:hover {
+  background-color: rgba(13, 110, 253, 0.1);
+  color: #0d6efd;
+}
+
+.sidebar .nav-link.active {
+  background-color: #e9f2ff;
+  color: #0d6efd;
+  border-radius: 4px;
+}
+
+.sidebar .nav-link.active .menu-icon {
+  color: #0d6efd;
+}
+
+.content {
+  margin-left: 220px;
+  padding: 20px;
+  flex: 1;
+  transition: margin-left 0.3s ease;
+}
+
+.content.sidebar-collapsed {
+  margin-left: 70px;
+}
+
+.content.no-sidebar {
+  margin-left: 0;
+}
+
+/* User dropdown in sidebar */
+.user-dropdown {
+  padding: 0;
+  margin-bottom: 15px;
+  border-bottom: 1px solid #dee2e6;
+  width: 100%;
+}
+
+.user-dropdown.collapsed {
+  text-align: center;
+}
+
+.user-dropdown-toggle {
+  padding: 0 !important;
+  border: none !important;
+  width: 100%;
+  text-align: left;
+  box-shadow: none !important;
+  color: inherit !important;
+}
+
+.user-dropdown-toggle::after {
+  display: none !important;
+}
+
+.user-dropdown-toggle:hover,
+.user-dropdown-toggle:focus,
+.user-dropdown-toggle:active {
+  background-color: rgba(13, 110, 253, 0.1) !important;
+}
+
+.user-icon {
+  width: 30px;
+  height: 30px;
+  color: #0d6efd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+}
+
+.user-name {
+  font-weight: 500;
+  font-size: 14px;
+}
+
+.user-role {
+  font-size: 12px;
+  color: #6c757d;
+}
+
+.dropdown-menu {
+  width: 200px;
+}
+
+.container {
+  flex: 1;
+}
+
+.parking-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.parking-slot {
+  border: 1px solid #ccc;
+  padding: 10px;
+  text-align: center;
+  border-radius: 5px;
+  position: relative;
+}
+
+.parking-slot.available {
+  background-color: #d4edda;
+  border-color: #c3e6cb;
+}
+
+.parking-slot.occupied {
+  background-color: #f8d7da;
+  border-color: #f5c6cb;
+}
+
+.parking-slot.reserved {
+  background-color: #fff3cd;
+  border-color: #ffecb5;
+}
+
+.parking-area {
+  margin-bottom: 20px;
+}
+
+.parking-area-title {
+  font-size: 1.2rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+  padding: 5px 10px;
+  background-color: #f8f9fa;
+  border-radius: 5px;
+  display: flex;
+  align-items: center;
+}
+
+.parking-area-title img {
+  margin-right: 10px;
+}
+
+.vehicle-icon {
+  width: 24px;
+  height: 24px;
+  margin-right: 5px;
+}
+
+.recent-vehicles-table {
+  margin-top: 20px;
+}
+
+.recent-vehicles-table th {
+  background-color: #f8f9fa;
+}
+
+.status-badge {
+  font-size: 0.85rem;
+  padding: 5px 8px;
+}
+
+.webcam-container {
+  margin-bottom: 20px;
+}
+
+.webcam-container video {
+  width: 100%;
+  max-width: 500px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+}
+
+.vehicle-info {
+  margin-top: 20px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  background-color: #f8f9fa;
+}
+
+.vehicle-card {
+  margin-bottom: 15px;
+}
+
+.search-container {
+  margin-bottom: 20px;
+}
+
+.webcam-card {
+  height: 100%;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.webcam-container {
+  background-color: #f8f9fa;
+  min-height: 300px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.detection-list {
+  max-height: 600px;
+  overflow-y: auto;
+}
+
+.detection-card {
+  transition: all 0.3s ease;
+}
+
+.detection-card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}

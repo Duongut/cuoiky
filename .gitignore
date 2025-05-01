@@ -1,0 +1,9 @@
+# Loại bỏ thư mục build/tạm
+bin/
+obj/
+__pycache__/
+.venv/
+node_modules/
+
+# Tùy chọn khác
+*.log
