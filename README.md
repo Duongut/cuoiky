@@ -3,10 +3,10 @@
 Hệ thống quản lý bãi đỗ xe thông minh với khả năng nhận diện biển số và phân loại phương tiện. Hệ thống hỗ trợ xử lý video realtime từ webcam để tự động quản lý xe ra vào.
 
 ## Thông tin chung
-- Tổng số chỗ: 250 chỗ
-  + Xe máy: 200 chỗ (ID bắt đầu bằng M)
-  + Ô tô: 50 chỗ (ID bắt đầu bằng C)
-- Đối tượng: Xe vãng lai
+- Tổng số chỗ: Có thể cấu hình qua giao diện Settings (mặc định: 250 chỗ)
+  + Xe máy: Mặc định 200 chỗ (ID bắt đầu bằng M)
+  + Ô tô: Mặc định 50 chỗ (ID bắt đầu bằng C)
+- Đối tượng: Xe vãng lai và xe đăng ký gói tháng
 - Tech stack:
   + Backend: ASP.NET Core + Flask API
   + Frontend: Vite + React
@@ -14,6 +14,17 @@ Hệ thống quản lý bãi đỗ xe thông minh với khả năng nhận diệ
   + ML Models: YOLOv5 + ML.NET
   + Video Stream: Flask + OpenCV
   + Real-time Updates: SignalR + WebSockets
+  + Thanh toán: MoMo, Stripe, Tiền mặt
+
+## Tính năng chính
+- Nhận diện biển số xe tự động
+- Phân loại phương tiện (ô tô/xe máy)
+- Quản lý chỗ đỗ xe theo thời gian thực
+- Đăng ký và gia hạn gói tháng
+- Thanh toán trực tuyến qua MoMo và Stripe
+- Báo cáo thống kê doanh thu
+- Phân quyền người dùng (Admin/Nhân viên)
+- Cấu hình hệ thống linh hoạt (giá vé, số lượng chỗ đỗ)
 
 ## Cài đặt và chạy hệ thống
 
@@ -23,8 +34,6 @@ Hệ thống quản lý bãi đỗ xe thông minh với khả năng nhận diệ
 ```bash
 # Tạo và kích hoạt môi trường ảo Python
 python -m venv .venv
-source .venv/bin/activate  # Linux/Mac
-# hoặc
 .venv\Scripts\activate  # Windows
 
 # Cài đặt các thư viện cần thiết
@@ -52,57 +61,111 @@ dotnet restore
 # Cài đặt MongoDB
 # https://www.mongodb.com/try/download/community
 
-# Khởi động MongoDB
-mongod --dbpath=/path/to/data/db
+# Khởi động MongoDB (Windows)
+# Đảm bảo dịch vụ MongoDB đã được cài đặt và đang chạy
 ```
 
-### 2. Chạy hệ thống
+#### Frontend
+```bash
+# Cài đặt Node.js và npm
+# https://nodejs.org/en/download/
 
-#### Khởi động toàn bộ hệ thống
+# Cài đặt các gói phụ thuộc
+cd smart-parking-frontend
+npm install
+```
+
+### 2. Chuẩn bị mô hình ML
+
+Sao chép file mô hình phân loại phương tiện:
+```
+SmartParking.Core\SmartParking.Core\MLModels\VehicleClassification.zip
+```
+
+vào thư mục:
+```
+SmartParking.Core\SmartParking.Core\bin\Debug\net8.0\MLModels\VehicleClassification.zip
+```
+
+### 3. Chạy hệ thống
+
+#### Khởi động toàn bộ hệ thống (Khuyến nghị)
 ```bash
 # Chạy script khởi động hệ thống
-./start_system.sh
+run_smart_parking.bat
 ```
 
-Hoặc khởi động từng thành phần riêng biệt:
+Script này sẽ khởi động tất cả các thành phần theo thứ tự và đảm bảo chúng hoạt động đúng cách.
 
-#### Khởi động License Plate Recognition API
+Để dừng hệ thống:
+```bash
+kill_smart_parking.bat
+```
+
+#### Hoặc khởi động từng thành phần riêng biệt:
+
+##### Khởi động License Plate Recognition API
 ```bash
 cd License-Plate-Recognition-main
-./start_api.sh
+start_api.bat
 # API sẽ chạy tại http://localhost:4050
 ```
 
-#### Khởi động Streaming API
+##### Khởi động Streaming API
 ```bash
 cd License-Plate-Recognition-main
-./start_stream_api.sh
+start_stream_api.bat
 # API sẽ chạy tại http://localhost:4051
 ```
 
-#### Khởi động SmartParking.Core API
+##### Khởi động SmartParking.Core API
 ```bash
 cd SmartParking.Core
 dotnet run --project SmartParking.Core
-# API sẽ chạy tại https://localhost:7243 và http://localhost:5125
+# API sẽ chạy tại http://localhost:5126
 ```
 
-#### Khởi động Frontend
+##### Khởi động Frontend
 ```bash
-./start_frontend.sh
+cd smart-parking-frontend
+npm run dev
 # Frontend sẽ chạy tại http://localhost:3000
 ```
 
-#### Kiểm tra tích hợp
-```bash
-# Chạy script kiểm tra tích hợp
-python integration_test.py
-
-# Chạy script kiểm tra SmartParking.Core API
-python test_smartparking_api.py
-```
-
 ## Sử dụng hệ thống
+
+### Đăng nhập hệ thống
+- Admin: thaiduonggrnff@gmail.com / password
+- Nhân viên: Tạo tài khoản mới từ trang quản lý người dùng
+
+### Các chức năng chính
+
+#### Dashboard
+- Hiển thị tổng quan về tình trạng bãi đỗ xe
+- Theo dõi số lượng xe đang đỗ theo loại
+- Xem danh sách xe đang đỗ
+
+#### Check-in/Check-out
+- Nhận diện biển số tự động từ hình ảnh
+- Phân loại phương tiện tự động
+- Cấp và giải phóng chỗ đỗ xe
+
+#### Quản lý xe tháng
+- Đăng ký gói tháng mới
+- Gia hạn gói tháng
+- Thanh toán trực tuyến hoặc tiền mặt
+- Tự động nhận diện biển số và loại xe từ hình ảnh
+
+#### Báo cáo
+- Thống kê doanh thu theo khoảng thời gian
+- Phân tích doanh thu theo loại giao dịch
+- Báo cáo gói tháng và giao dịch vãng lai
+- Xuất báo cáo
+
+#### Cài đặt hệ thống
+- Cấu hình giá vé và gói tháng
+- Điều chỉnh số lượng chỗ đỗ xe
+- Quản lý người dùng (Admin)
 
 ### API Endpoints
 
@@ -122,16 +185,15 @@ python test_smartparking_api.py
 
 #### SmartParking.Core API
 - `POST /api/vehicle/checkin`: Check-in xe vào bãi
-  - Body: form-data với key `image` và value là file hình ảnh
 - `POST /api/vehicle/checkout/{vehicleId}`: Check-out xe ra khỏi bãi
 - `GET /api/parking/slots`: Lấy danh sách tất cả các slot đỗ xe
 - `GET /api/parking/vehicles/parked`: Lấy danh sách các xe đang đỗ
-- `GET /api/parking/initialize`: Khởi tạo các slot đỗ xe
-- `GET /api/cameras`: Lấy danh sách các camera
-- `POST /api/cameras/{cameraId}/start`: Bắt đầu stream từ camera
-- `POST /api/cameras/{cameraId}/stop`: Dừng stream từ camera
-- `GET /api/cameras/{cameraId}/detections`: Lấy các biển số được nhận diện
-- `GET /api/cameras/{cameraId}/metrics`: Lấy metrics của camera
+- `POST /api/monthlyvehicle/register`: Đăng ký xe tháng
+- `POST /api/monthlyvehicle/renew/{vehicleId}`: Gia hạn xe tháng
+- `GET /api/reports/transactions`: Lấy báo cáo giao dịch
+- `GET /api/reports/revenue`: Lấy báo cáo doanh thu
+- `GET /api/settings`: Lấy cài đặt hệ thống
+- `PUT /api/settings/{key}`: Cập nhật cài đặt hệ thống
 
 ## Quy trình hoạt động
 
@@ -145,6 +207,7 @@ python test_smartparking_api.py
 
 2. **Xe ra khỏi bãi**:
    - Hệ thống xác nhận ID xe
+   - Tính toán phí đỗ xe dựa trên thời gian
    - Cập nhật trạng thái xe và chỗ đỗ
    - Giải phóng chỗ đỗ xe
 
@@ -162,20 +225,15 @@ python test_smartparking_api.py
    - Tự động check-out xe và giải phóng chỗ đỗ
    - Hiển thị thông tin xe ra trên dashboard
 
-## Phát triển
-
-### Cấu trúc dự án
+## Cấu trúc dự án
 - `License-Plate-Recognition-main/`: Mã nguồn nhận diện biển số
 - `SmartParking.Core/`: API quản lý bãi đỗ xe
-- `integration_test.py`: Script kiểm tra tích hợp
+- `smart-parking-frontend/`: Giao diện người dùng
+- `run_smart_parking.bat`: Script khởi động hệ thống
+- `kill_smart_parking.bat`: Script dừng hệ thống
 
-### Các tính năng đang phát triển
-- Tích hợp thanh toán
-- Quản lý xe theo tháng
-- Báo cáo thống kê
-- Giao diện người dùng
-
-## Đóng góp
-Vui lòng liên hệ với nhóm phát triển để đóng góp vào dự án.
-
-##### Bỏ cái file zip trong SmartParking.Core\SmartParking.Core\MLModels\VehicleClassification.zip vào trong  SmartParking.Core\SmartParking.Core\bin\Debug\net8.0\MLModels\VehicleClassification.zip
+## Lưu ý
+- Đảm bảo MongoDB đang chạy trước khi khởi động hệ thống
+- Sao chép file mô hình ML.NET vào đúng vị trí như hướng dẫn
+- Sử dụng run_smart_parking.bat để khởi động toàn bộ hệ thống một cách đáng tin cậy
+- Hệ thống được thiết kế để chạy trên Windows
