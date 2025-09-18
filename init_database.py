@@ -8,15 +8,15 @@ def initialize_database():
     # Connect to MongoDB
     try:
         client = MongoClient("mongodb://localhost:27017/")
-        print("✅ Connected to MongoDB")
+        print("Connected to MongoDB")
     except Exception as e:
-        print(f"❌ Could not connect to MongoDB: {e}")
+        print(f"Could not connect to MongoDB: {e}")
         return False
 
     # 🧹 Drop the entire database (automatically without confirmation)
-    print("⚠️ Dropping the entire SmartParkingDb...")
+    print("Dropping the entire SmartParkingDb...")
     client.drop_database("SmartParkingDb")
-    print("✅ Dropped existing SmartParkingDb")
+    print("Dropped existing SmartParkingDb")
 
     # Reconnect to fresh database
     db = client["SmartParkingDb"]
@@ -47,14 +47,14 @@ def initialize_database():
     # Insert all slots
     if motorcycle_slots:
         parking_slots.insert_many(motorcycle_slots)
-        print(f"✅ Created {len(motorcycle_slots)} motorcycle parking slots")
+        print(f"Created {len(motorcycle_slots)} motorcycle parking slots")
     
     if car_slots:
         parking_slots.insert_many(car_slots)
-        print(f"✅ Created {len(car_slots)} car parking slots")
+        print(f"Created {len(car_slots)} car parking slots")
     
     # Show summary
-    print("\n✅ Database initialization complete!")
+    print("\nDatabase initialization complete!")
     print(f"Total parking slots: {len(motorcycle_slots) + len(car_slots)}")
     print(f"- Motorcycle slots: {len(motorcycle_slots)}")
     print(f"- Car slots: {len(car_slots)}")
